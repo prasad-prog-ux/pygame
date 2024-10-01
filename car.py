@@ -9,7 +9,7 @@ print(os.getcwd())
 pygame.init()
 # sounds on 
 pygame.mixer.music.load("cyber.wav")
-pygame.mixer.music.play()
+pygame.mixer.music.play(-1)
 wn = pygame.display.set_mode((360, 639)) 
 pygame.display.set_caption("Car Racing")
 logo = pygame.image.load("car.png")
@@ -28,6 +28,7 @@ crash_y = 250
 
 game_exit = False
 bg = pygame.image.load("back1.jpg")
+
 #lambo image
 car=pygame.image.load("red2.png")
 img_x=150
@@ -48,6 +49,9 @@ img2_x=200
 img2_y=300
 img2_xchange=0
 img2_ychange=0.2
+# Variables for moving background
+bg_y1 = 0
+bg_y2 = -639
 
 def car_image  (x,y):
     wn.blit(car,(x,y))
@@ -82,7 +86,21 @@ def show_crash(x, y):
 
 
 while not game_exit:
-   wn.blit(bg, (0, 0,))  # Draw the background image
+   wn.blit(bg, (0, 0,)) 
+   wn.blit(bg, (0, bg_y1))
+   wn.blit(bg, (0, bg_y2))
+
+    # Update background position
+   bg_y1 += 0.5
+                  # Speed of the background
+   bg_y2 += 0.5
+
+    # Reset the background positions when off-screen
+   if bg_y1 >= 639:
+        bg_y1 = bg_y2 - 639
+   if bg_y2 >= 639:
+        bg_y2 = bg_y1 - 639
+ # Draw the background image
 
    for event in pygame.event.get():
 

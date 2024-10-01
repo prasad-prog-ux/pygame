@@ -84,18 +84,18 @@ def show_crash(x, y):
     font_crash = font.render("CAR CRASHED!!!", True, (0, 255, 255))  #
     wn.blit(font_crash, (x, y))
 
-
+   
 while not game_exit:
    wn.blit(bg, (0, 0,)) 
    wn.blit(bg, (0, bg_y1))
    wn.blit(bg, (0, bg_y2))
 
-    # Update background position
+    
    bg_y1 += 0.5
                   # Speed of the background
    bg_y2 += 0.5
 
-    # Reset the background positions when off-screen
+   
    if bg_y1 >= 639:
         bg_y1 = bg_y2 - 639
    if bg_y2 >= 639:
@@ -168,11 +168,12 @@ while not game_exit:
      img2_ychange=0
      img_xchange = 0
      show_crash(crash_x,crash_y)
-     show_score(score_x,score_y)
+     show_score(score_x,score_y)  
+
+
      
 
-
-   pygame.display.update()  # Update the display
+pygame.display.update()  # Update the display
 
 pygame.quit()
 sys.exit()
